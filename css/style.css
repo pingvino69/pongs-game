@@ -1,0 +1,451 @@
+@charset "UTF-8";
+:root {
+  font-family: "Sora", sans-serif;
+  --black: #111;
+  --white: white;
+  --blue: #00b4db;
+  --red: #ff416c;
+  --dark-blue: #0a1929;
+  --dark-blue-2: #152238;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+/* Головне меню */
+#mainMenu {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 50px 40px;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.menu-container h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #00b4db;
+  font-weight: 700;
+}
+
+.menu-description {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Кнопка початку гри */
+.start-game-btn-container {
+  margin: 40px 0;
+}
+
+.start-game-btn {
+  background: linear-gradient(45deg, #00b4db, #0083b0);
+  color: white;
+  border: none;
+  padding: 25px 80px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 5px 20px rgba(0, 180, 219, 0.3);
+}
+
+.start-game-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 180, 219, 0.5);
+}
+
+.start-game-btn:active {
+  transform: translateY(-2px);
+}
+
+.start-game-btn .icon {
+  font-size: 1.8rem;
+}
+
+.start-game-btn .text {
+  font-size: 1.5rem;
+}
+
+/* Інформація про керування */
+.controls-info {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.controls-info div:first-child {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.keys {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffcc00;
+  letter-spacing: 1px;
+}
+
+/* Ігровий екран */
+#gameScreen {
+  display: none;
+}
+
+.game-header {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.player-score {
+  padding: 15px 30px;
+  border-radius: 12px;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.player-score.blue {
+  background: linear-gradient(135deg, rgba(0, 180, 219, 0.25), rgba(0, 131, 176, 0.15));
+  border: 2px solid rgba(0, 180, 219, 0.4);
+}
+
+.player-score.red {
+  background: linear-gradient(135deg, rgba(255, 65, 108, 0.25), rgba(200, 40, 80, 0.15));
+  border: 2px solid rgba(255, 65, 108, 0.4);
+}
+
+.player-name {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  min-width: 80px;
+}
+
+.vs-separator {
+  font-size: 1.8rem;
+  font-weight: 700;
+  opacity: 0.7;
+  padding: 0 15px;
+}
+
+/* Кнопки керування в грі */
+.game-controls-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.control-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  color: white;
+}
+
+.control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sound-btn {
+  background: linear-gradient(135deg, rgba(0, 180, 219, 0.3), rgba(0, 131, 176, 0.2));
+}
+
+.sound-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 180, 219, 0.4), rgba(0, 131, 176, 0.3));
+}
+
+.home-btn {
+  background: linear-gradient(135deg, rgba(255, 65, 108, 0.3), rgba(200, 40, 80, 0.2));
+}
+
+.home-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 65, 108, 0.4), rgba(200, 40, 80, 0.3));
+}
+
+.home-icon {
+  font-size: 1.5rem;
+}
+
+/* Canvas */
+canvas {
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--dark-blue), var(--dark-blue-2));
+  box-shadow: 0 0 40px rgba(0, 180, 219, 0.25);
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Інформація про гру */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 25px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.difficulty-info, .hits-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#difficultyLevel {
+  color: #ffcc00;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+#hitsCount {
+  color: #00ff88;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Game Over */
+#gameOver {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  padding: 50px 70px;
+  border-radius: 20px;
+  text-align: center;
+  display: none;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  min-width: 450px;
+  z-index: 1000;
+  box-shadow: 0 0 50px rgba(0, 180, 219, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.game-over-title {
+  color: #ffcc00;
+  margin-bottom: 25px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.final-score {
+  color: #00ff88;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.score-result {
+  color: white;
+  font-size: 3rem;
+  margin: 25px 0;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.game-stats {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 25px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.game-over-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.restart-btn {
+  background: linear-gradient(45deg, #00b4db, #0083b0);
+  color: white;
+  border: none;
+  padding: 18px 45px;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.restart-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 180, 219, 0.5);
+}
+
+.menu-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 18px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.menu-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Основні кнопки */
+button {
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  outline: none;
+  font-family: "Sora", sans-serif;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  #mainMenu {
+    padding: 30px 20px;
+  }
+  .menu-container h2 {
+    font-size: 1.6rem;
+  }
+  .start-game-btn {
+    padding: 20px 50px;
+    font-size: 1.3rem;
+  }
+  .game-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  .score-container {
+    gap: 20px;
+  }
+  .player-score {
+    min-width: 140px;
+    padding: 12px 20px;
+  }
+  .score-value {
+    font-size: 2.2rem;
+  }
+  canvas {
+    width: 95vw;
+    height: 70vh;
+    max-width: 700px;
+    max-height: 800px;
+  }
+  #gameOver {
+    min-width: 320px;
+    padding: 30px 40px;
+  }
+  .game-over-title {
+    font-size: 2.2rem;
+  }
+  .game-over-buttons {
+    flex-direction: column;
+  }
+  .restart-btn, .menu-btn {
+    width: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */

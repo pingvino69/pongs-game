@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-wigth, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.scss">
+
+    <title>PONG GAME</title>
+    <link rel="icon" href="./img/favicon.jpg" type="image/png">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>⚡ PONG GAME ⚡</h1>
+
+            <!-- Головне меню -->
+            <div id="mainMenu">
+                <div class="menu-container">
+                    <h2>НЕСКІНЧЕННА ГРА ПРОТИ БОТА</h2>
+                    <p class="menu-description">Бот стає сильнішим з кожним вашим голом!</p>
+                    <div class="start-game-btn-container">
+                        <button id="startGameBtn" class="start-game-btn">
+                            <span class="icon">🎮</span>
+                            <span class="text">ПОЧАТИ ГРУ</span>
+                        </button>
+                    </div>
+                    <div class="controls-info">
+                        <div>Керування:</div>
+                        <div class="keys">← → СТРІЛКИ або A D</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ігровий екран -->
+            <div id="gameScreen" style="display: none;">
+                <div class="game-header">
+                    <div class="score-container">
+                        <div class="player-score blue">
+                            <div class="player-name">ГРАВЕЦЬ</div>
+                            <div class="score-value" id="playerScore">0</div>
+                        </div>
+                        <div class="vs-separator">VS</div>
+                        <div class="player-score red">
+                            <div class="player-name">БОТ</div>
+                            <div class="score-value" id="botScore">0</div>
+                        </div>
+                    </div>
+
+                    <div class="game-controls-buttons">
+                        <button id="soundToggle" class="control-btn sound-btn" title="Увімк/Вимк звук">
+                            <span id="soundIcon">🔊</span>
+                        </button>
+                        <button id="exitToMenuBtn" class="control-btn home-btn" title="Вийти в меню">
+                            <span class="home-icon">🏠</span>
+                        </button>
+                    </div>
+                </div>
+
+                <canvas id="gameCanvas" width="700" height="800"></canvas>
+
+                <div class="game-info">
+                    <div class="difficulty-info">
+                        <span>Складність:</span>
+                        <span id="difficultyLevel">1.0x</span>
+                    </div>
+                    <div class="hits-info">
+                        <span>Влучень м'яча:</span>
+                        <span id="hitsCount">0</span>
+                    </div>
+                </div>
+
+                <!-- Повідомлення про кінець гри -->
+                <div id="gameOver" style="display: none;">
+                    <h2 class="game-over-title" id="winnerTitle">ГРА ЗАВЕРШЕНА</h2>
+                    <div class="final-score" id="winnerMessage"></div>
+                    <div class="score-result" id="finalScore">0:0</div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span>Максимальна складність:</span>
+                            <span id="maxDifficulty">1.0x</span>
+                        </div>
+                        <div class="stat">
+                            <span>Всього влучень:</span>
+                            <span id="totalHits">0</span>
+                        </div>
+                    </div>
+                    <div class="game-over-buttons">
+                        <button id="restartBtn" class="restart-btn">🔄 ГРАТИ ЗНОВУ</button>
+                        <button id="menuBtn" class="menu-btn">← ГОЛОВНЕ МЕНЮ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Аудіо -->
+        <audio id="backgroundMusic" loop>
+            <!-- Змінити на ваш шлях -->
+            <source src="./sounds/музика для ігри.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="hitSound">
+            <source src="https://assets.mixkit.co/sfx/preview/mixkit-retro-arcade-game-hit-2187.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="scoreSound">
+            <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+        </audio>
+
+        <script src="js/jquery-4.0.0.js"></script>
+
+        <script src="js/game.js"></script>
+
+</body>
+
+</html>
